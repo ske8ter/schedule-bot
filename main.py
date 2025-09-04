@@ -184,5 +184,10 @@ Thread(target=alive).start()
 print(f"{Fore.LIGHTYELLOW_EX}[INFO] Bot started!{Fore.RESET}")
 Thread(target=reminder, args=[bot]).start()
 Thread(target=auto_backup).start()
-bot.polling(none_stop=True)
+while True:
+    try:
+        bot.polling(none_stop=True)
+    except:
+        pass
+
 
