@@ -44,7 +44,7 @@ days = {"Monday": {"8:00":"1. Фізичне виховання, частина 
                    "14:50":None,
                    "16:25":None},
 
-        "Thursday":{"14:45":"1. Основи інформаційної та кібернетичної безпеки\n8:00-9:20\n<b>Дудикевич В.Б., 208 XIX н.к., Лекція</b>",
+        "Thursday":{"8:30":"1. Основи інформаційної та кібернетичної безпеки\n8:00-9:20\n<b>Дудикевич В.Б., 208 XIX н.к., Лекція</b>",
                    "10:05":"2. Технології програмування, частина 1\n10:05-11:25\n<b>Совин Я.Р., 208 XIX н.к., Лекція</b>",
                    "11:40":None,
                    "13:15":None,
@@ -185,3 +185,4 @@ print(f"{Fore.LIGHTYELLOW_EX}[INFO] Bot started!{Fore.RESET}")
 Thread(target=reminder, args=[bot]).start()
 Thread(target=auto_backup).start()
 bot.polling(none_stop=True)
+
