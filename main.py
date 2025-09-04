@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 import telebot
 from threading import Thread
 import time
+import flask
 from colorama import Fore
 
 
@@ -22,7 +23,7 @@ else:
     remind = []
 
 
-days = {"Monday": {"8:30":"1. Фізичне виховання, частина 1\n8:00-9:20\n<b>Практична</b>",
+days = {"Monday": {"8:00":"1. Фізичне виховання, частина 1\n8:00-9:20\n<b>Практична</b>",
                    "10:05":None,
                    "11:40":"3. Вища математика, частина 1\n11:40-13:00\n<b>Кучма М.І., 322 I н.к., Лекція</b>",
                    "13:15":"4. Українська мова за професійним спрямуванням\n13:15-14:35\n<b>Шмілик І.Д., 405 I н.к. Практична</b>",
@@ -169,6 +170,17 @@ def reminder(bot):
     except Exception as e:
         print(f"{Fore.LIGHTRED_EX}[ERROR] An error occurred in the reminder function: {e}{Fore.RESET}")
 
+def alive():
+    app = flask.Flask(__name__)
+
+    @app.route('/')
+    def index():
+        return "Bot is running!"
+
+    app.run(host='0.0.0.0', port=8080)
+
+print(f"{Fore.LIGHTYELLOW_EX}[INFO] Alive func started!{Fore.RESET}")
+Thread(target=alive).start()
 print(f"{Fore.LIGHTYELLOW_EX}[INFO] Bot started!{Fore.RESET}")
 Thread(target=reminder, args=[bot]).start()
 Thread(target=auto_backup).start()
